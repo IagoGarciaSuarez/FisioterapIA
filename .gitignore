@@ -1,0 +1,5 @@
+__pycache__
+sbc
+CLIPS/*.txt
+CLIPS/facts*
+CLIPS/run.clp
