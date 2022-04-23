@@ -4,11 +4,9 @@ FisioterapIA es un sistema basado en conocimiento experto dedicado al campo de l
 En el mismo repositorio se puede encontrar el archivo PDF relativo a su documentación, con nombre "FisioterapIA_documentacion.pdf".
 
 ## Instalación
-Para poder utilizar el sistema, se necesitarán instalar las dependencias indicadas en "requirements.txt" si no lo estaban previamente (si el archivo está vacío, no es necesario seguir este paso):
-```sh
-pip install -r requirements.txt
-```
-Una vez instaladas, se podrá ejecutar el archivo "fisioterapia.py" con Python 3.9:
+No es necesario instalar ningún programa excepto Python 3.9.
+
+Se podrá ejecutar el archivo "fisioterapia.py" con Python 3.9:
 ```sh
 python fisioterapia.py
 ```

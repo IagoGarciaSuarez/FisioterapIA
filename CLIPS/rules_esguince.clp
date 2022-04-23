@@ -119,47 +119,61 @@
 (defrule regla_crisp_esguince_16
 	(or (infl_leve)
 		(infl_media)
-		(infl_sust)
-		(infl_anormal)
+		(infl_sust))
+=>
+	(assert (infl_normal)))
+
+(defrule regla_crisp_esguince_17
+	(or (infl_anormal)
 		(infl_normal))
 =>
 	(assert (inflamacion)))
 
-(defrule regla_crisp_esguince_16
+(defrule regla_crisp_esguince_18
 	(or (hematoma_leve)
 		(hematoma_medio)
-		(hematoma_sust)
-		(hematoma_normal)
+		(hematoma_sust))
+=>
+	(assert (hematoma_normal)))
+
+(defrule regla_crisp_esguince_19
+	(or (hematoma_normal)
 		(hematoma_anormal))
 =>
 	(assert (hematoma)))
 
-(defrule regla_crisp_esguince_17
+(defrule regla_crisp_esguince_20
 	(or (sens_leve)
 		(sens_media)
 		(sens_sust))
 =>
 	(assert (sensibilidad)))
 
-(defrule regla_crisp_esguince_18
+(defrule regla_crisp_esguince_21
 	(esg_lat_tob_g1)
 =>
 	(assert (esguince_lateral_tobillo))
 	(assert (tratamiento_g1))
 	(assert (desg_lig_leve)))
 
-(defrule regla_crisp_esguince_19
+(defrule regla_crisp_esguince_22
 	(esg_lat_tob_g2)
 =>
 	(assert (esguince_lateral_tobillo))
 	(assert (tratamiento_g2))
 	(assert (desg_lig_medio)))
 
-(defrule regla_crisp_esguince_20
+(defrule regla_crisp_esguince_23
 	(esg_lat_tob_g2)
 =>
 	(assert (esguince_lateral_tobillo))
 	(assert (desg_lig_sust)))
+
+(defrule regla_crisp_esguince_24
+	(esg_lat_tob_g3)
+	(not (tiene_diagnostico))
+=>
+	(assert (derivar_medico)))
 
 ;-----------Reglas con FC---------
 ; Esguince
