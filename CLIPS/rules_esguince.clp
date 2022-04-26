@@ -175,6 +175,10 @@
 =>
 	(assert (derivar_medico)))
 
+(defrule regla_crisp_esguince_25
+	(esg_lat_tob_g3)
+=>
+	(assert (esguince_lateral_tobillo)))
 ;-----------Reglas con FC---------
 ; Esguince
 

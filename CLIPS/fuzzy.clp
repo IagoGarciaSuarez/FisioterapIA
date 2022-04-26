@@ -2,27 +2,27 @@
 	0 10
 	(
 		(leve (0 1) (1 1) (4 0))
-		(media (3.5 0) (6 1) (7.5 0))
-		(sust (8 0) (10 1))
+		(media (2 0) (6 1) (8 0))
+		(sust (7 0) (10 1))
 	)
 )
 (deftemplate hematoma
 	0 10
 	(
 		(leve (0 1) (1 1) (4 0))
-		(medio (3.5 0) (6 1) (7.5 0))
-		(sust (8 0) (10 1))
+		(medio (2 0) (6 1) (8 0))
+		(sust (7 0) (10 1))
 	)
 )
 
-(deftemplate esguince
+(deftemplate importancia
 	0 10
 	(
-		(g1 (0 1) (1 1) (3 0))
-		(g1_2 (1 0) (3 1) (5 0))
-		(g2 (3 0) (5 1) (7 0))
-		(g2_3 (5 0) (7 1) (9 0))
-		(g3 (7 0) (9 1) (10 1))
+		(muy_poca (0 1) (1 1) (3 0))
+		(leve (1 0) (3 1) (5 0))
+		(media (3 0) (5 1) (7 0))
+		(importante (5 0) (7 1) (9 0))
+		(urgente (7 0) (9 1) (10 1))
 	)
 )
 
@@ -30,32 +30,52 @@
 	(inflamacion leve)
 	(hematoma leve)
 =>
-	(assert (esguince g1)))
+	(assert (importancia muy_poca)))
 
 (defrule r2
-	(or (and (inflamacion leve)
-			(hematoma medio))
-		(and (inflamacion media)
-			(hematoma medio)))
+	(inflamacion media)
+	(hematoma leve)
 =>
-	(assert (esguince g1_2)))
+	(assert (importancia leve)))
 
 (defrule r3
+	(inflamacion sust)
+	(hematoma leve)
+=>
+	(assert (importancia media)))
+
+(defrule r4
+	(inflamacion leve)
+	(hematoma medio)
+=>
+	(assert (importancia leve)))
+
+(defrule r5
 	(inflamacion media)
 	(hematoma medio)
 =>
-	(assert (esguince g2)))
+	(assert (importancia media)))
 
-(defrule r4
-	(or (and (inflamacion media)
-			(hematoma sust))
-		(and (inflamacion sust)
-			(hematoma medio)))
+(defrule r6
+	(inflamacion sust)
+	(hematoma medio)
 =>
-	(assert (esguince g2_3)))
+	(assert (importancia importante)))
 
-(defrule r5
+(defrule r7
+	(inflamacion leve)
+	(hematoma sust)
+=>
+	(assert (importancia media)))
+	
+(defrule r8
+	(inflamacion media)
+	(hematoma sust)
+=>
+	(assert (importancia importante)))
+	
+(defrule r9
 	(inflamacion sust)
 	(hematoma sust)
 =>
-	(assert (esguince g3)))
+	(assert (importancia urgente)))
